@@ -10,7 +10,7 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 
 # Load the theme
 source ~/.config/powerlevel10k/powerlevel10k.zsh-theme
-test ! -f ~/.p10k.zsh || source ~/.p10.zsh
+test ! -f ~/.p10k.zsh || source ~/.p10k.zsh
 
 # History
 SAVEHIST=1000

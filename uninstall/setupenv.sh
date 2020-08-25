@@ -2,7 +2,7 @@
 
 # ==== PROGRAMS ====
 
-programs="bspwm compton polybar powerlevel10k scrub sxhkd zsh"
+programs="bspwm compton polybar scrub sxhkd"
 
 # ==== COLORS ====
 
@@ -67,14 +67,14 @@ rm -rf /usr/share/fonts/hacknerd
 
 warning "Removing config files"
 rm -f "${HOME}"/.zsh* "${HOME}"/.p10k.zsh /root/.zsh* /root/.p10k.zsh
-rm -rf "${CONFIG}"/feh
+rm -rf "${CONFIG}"/feh "${CONFIG}"/powerlevel10k
 iter rm -rf "${CONFIG}"/%%
 
 # ==== REMOVE PROGRAMS ====
 
 warning "Uninstalling programs"
 iter apt -y purge %%
-apt -y purge bat feh lsd rofi 1>/dev/null 2>/dev/null
+apt -y purge bat feh lsd rofi zsh 1>/dev/null 2>/dev/null
 
 # ==== REMOVE SYSTEM DIRECTORIES ====
 
@@ -90,8 +90,8 @@ warning "Removing links"
 sed -i '/# Execute a customized Window Manager/d' "${HOME}"/.xinitrc
 sed -i '/exec bspwm/d' "${HOME}"/.xinitrc
 
-usermod -s /bin/bash "${USER}"
-usermod -s /bin/bash root
+usermod -s /bin/bash "${USER}" 1>/dev/null 2>/dev/null
+usermod -s /bin/bash root 1>/dev/null 2>/dev/null
 
 # ==== ALL DONE ====
 

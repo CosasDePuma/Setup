@@ -270,8 +270,8 @@ get zsh
 
 # Customize
 info "Customizing terminal"
-usermod -s /bin/zsh "${USER}"
-usermod -s /bin/zsh root
+usermod -s /bin/zsh "${USER}" 1>/dev/null 2>/dev/null
+usermod -s /bin/zsh root 1>/dev/null 2>/dev/null
 nullify wget -q -O "${HOME}/.zshrc" "${REPO}/.zshrc"
 nullify ln -s -f "${HOME}/.zshrc" /root/.zshrc
 log "Terminal successfully customized"
