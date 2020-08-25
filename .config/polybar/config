@@ -1,0 +1,135 @@
+;==========================================================
+; ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
+; ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
+; ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
+; ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
+; ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
+; ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+;==========================================================
+
+[colors]
+background = #222
+background-alt = #444
+foreground = #dfdfdf
+foreground-alt = #555
+primary = #ffb52a
+alert = #bd2c40
+
+[bar/puma]
+width = 100%
+height = 37
+
+font-0 = Hack Nerd Font Mono:pixelsize=12;2
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+radius = 6.0
+fixed-center = false
+line-size = 3
+line-color = #f00
+border-size = 4
+border-color = #00000000
+padding-left = 0
+padding-right = 2
+module-margin-left = 1
+module-margin-right = 2
+tray-padding = 2
+tray-position = right
+
+modules-left = bspwm
+modules-center = xwindow
+modules-right = wlan vpn pulseaudio cpu battery date
+
+wm-restack = bspwm
+scroll-up = bspwm-desknext
+scroll-down = bspwm-deskprev
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+[module/bspwm]
+type = internal/bspwm
+
+label-focused = 
+label-focused-padding = 2
+label-focused-background = ${colors.background-alt}
+
+label-occupied = 
+label-occupied-padding = 2
+
+label-urgent = 
+label-urgent-padding = 2
+label-urgent-background = ${colors.alert}
+
+label-empty = 
+label-empty-padding = 2
+label-empty-foreground = ${colors.foreground-alt}
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:30:...%
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+label = %percentage:2%%
+
+[module/wlan]
+type = custom/script
+exec = nm-applet
+
+[module/date]
+type = internal/date
+interval = 5
+date =
+date-alt = " %d-%m-%Y"
+time = %H:%M
+time-alt = %H:%M:%S
+label = %date% %time%
+
+[module/pulseaudio]
+type = internal/pulseaudio
+format-volume = <label-volume> <bar-volume>
+label-volume = 蓼
+label-volume-foreground = ${root.foreground}
+label-muted = 遼
+label-muted-foreground = #666
+bar-volume-width = 10
+bar-volume-foreground-0 = #55aa55
+bar-volume-foreground-1 = #55aa55
+bar-volume-foreground-2 = #55aa55
+bar-volume-foreground-3 = #55aa55
+bar-volume-foreground-4 = #55aa55
+bar-volume-foreground-5 = #f5a70a
+bar-volume-foreground-6 = #ff5555
+bar-volume-gradient = false
+bar-volume-indicator = |
+bar-volume-indicator-font = 2
+bar-volume-fill = ─
+bar-volume-fill-font = 2
+bar-volume-empty = ─
+bar-volume-empty-font = 2
+bar-volume-empty-foreground = ${colors.foreground-alt}
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = ADP1
+full-at = 99
+format-charging = <label-charging>
+format-discharging = <label-discharging>
+label-charging =  %percentage%%
+label-discharging =  %percentage%%
+
+[module/vpn]
+type = custom/script
+exec = ~/.config/polybar/scripts/ip.sh
+interval = 10
+
+[settings]
+screenchange-reload = true
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+
+; vim:ft=dosini

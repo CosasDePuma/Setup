@@ -1,0 +1,93 @@
+# ███████╗██╗  ██╗ ██████╗ ██████╗ ████████╗ ██████╗██╗   ██╗████████╗███████╗
+# ██╔════╝██║  ██║██╔═══██╗██╔══██╗╚══██╔══╝██╔════╝██║   ██║╚══██╔══╝██╔════╝
+# ███████╗███████║██║   ██║██████╔╝   ██║   ██║     ██║   ██║   ██║   ███████╗
+# ╚════██║██╔══██║██║   ██║██╔══██╗   ██║   ██║     ██║   ██║   ██║   ╚════██║
+# ███████║██║  ██║╚██████╔╝██║  ██║   ██║   ╚██████╗╚██████╔╝   ██║   ███████║
+# ╚══════╝╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═╝   ╚═╝    ╚═════╝ ╚═════╝    ╚═╝   ╚══════╝
+
+# ----------------------------------------------------
+# Programs
+#	Win + B                 BurpSuite
+#	Win + G                 Google Chrome
+#	Win + R                 Launcher
+#	Win + Enter             Terminal
+# ----------------------------------------------------
+# Utilities
+#	Win + F                 Toggle Fullscreen
+#	Win + M                 Toggle Main Node
+#	Win + S                 Toggle Node State
+#	Win + W                 Close & Kill
+#	Win + Arrows            Change Node
+#	Win + Ctrl + Arrows     Move Floating Window
+#	Win + Escape            Close Session
+#	Win + Tab,
+#	Alt + Tab               Next Node
+# ----------------------------------------------------
+
+# ----------------------------------------------------
+#  Programs
+# ----------------------------------------------------
+
+# Program Launcher
+super + r
+	rofi -show run
+
+# Terminal
+super + Return
+	gnome-terminal
+
+# Google Chrome
+super + g
+	google-chrome
+
+# BurpSuite
+super + b
+	gksudo burp
+
+# ----------------------------------------------------
+#  Utilities
+# ----------------------------------------------------
+
+# Close Session
+super + Escape
+	kill -9 -1
+
+# Close and Kill
+super + w
+	bspc node -c
+
+# Alternate Full Screen
+super + f
+	bspc desktop -l next
+
+# Change Window State
+super + s
+	bspc node -t {tiled,floating}
+
+# Current Node as Main Node
+super + m
+	bspc node -s biggest
+
+# Change Node
+super + {Left,Down,Up,Right}
+	bspc node -f {west,south,north,east}
+
+# Focus Next Node
+{super,alt} + Tab
+	bspc node -f next.local
+
+# Focus the Given Desktop
+super + {1-9,0}
+	bspc desktop -f '^{1-9,10}'
+
+# Send to the Given Desktop
+super + shift + {1-9,0}
+	bspc node -d '^{1-9,10}'
+
+# Move a Floating Window
+super + ctrl + {Left,Down,Up,Right}
+	bspc node -v {-20 0,0 20,0 -20,20 0}
+
+# Resize Current Window
+super + shift + {Left,Down,Up,Right}
+	/home/puma/.config/bspwm/scripts/bspwm_resize {west,south,north,east}
