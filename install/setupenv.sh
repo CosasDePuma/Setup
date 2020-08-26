@@ -325,13 +325,16 @@ get scrub
 # ==== INSTALL: fzf ====
 
 info "Installing fzf"
-chdir "${CONFIG}"
-git clone https://github.com/junegunn/fzf
-printf "y\ny\nn\n" | "${CONFIG}"/fzf/install
-rm -f "${HOME}"/.fzf.bash 1>/dev/null 2>/dev/null
-ln -s -f "${HOME}"/.fzf.zsh /root/.fzf.zsh
-ln -s -f "${CONFIG}"/fzf /root/.config/fzf
-chdir "${CWD}"
+if test -z "$(which fzf)"
+then
+    chdir "${CONFIG}"
+    nullify git clone https://github.com/junegunn/fzf
+    printf "y\ny\nn\n" | "${CONFIG}"/fzf/install 1>/dev/null 2>/dev/null
+    rm -f "${HOME}"/.fzf.bash 1>/dev/null 2>/dev/null
+    ln -s -f "${HOME}"/.fzf.zsh /root/.fzf.zsh
+    ln -s -f "${CONFIG}"/fzf /root/.config/fzf
+    chdir "${CWD}"
+fi
 log "fzf successfully installed"
 
 # ==== OWN CONFIG DIRECTORY ====
