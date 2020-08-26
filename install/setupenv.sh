@@ -256,7 +256,7 @@ nullify wget -q -O "${CONFIG}/sxhkd/sxhkdrc" "${REPO}/.config/sxhkd/sxhkdrc"
 log "sxhkd successfully customized"
 
 # xInit
-if ! grep -q "exec bspwm" "${HOME}"/.xinitrc
+if ! grep -q "exec bspwm" "${HOME}"/.xinitrc 1>/dev/null 2>/dev/null
 then
     echo "# Execute a customized Window Manager" >> "${HOME}"/.xinitrc
     echo "exec bspwm" >> "${HOME}"/.xinitrc
@@ -281,6 +281,7 @@ log "Terminal successfully customized"
 # Terminal Theme
 info "Installing powerlevel10k"
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${CONFIG}"/powerlevel10k 1>/dev/null 2>/dev/null
+ln -s -f "{CONFIG}"/powerlevel10k /root/.config/powerlevel10k
 log "Powerlevel10k successfully installed"
 
 # Customize the theme

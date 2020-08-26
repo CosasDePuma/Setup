@@ -27,6 +27,7 @@
     vcs                     # git status
     command_execution_time  # duration of the last command
     status                  # exit status
+    context                 # root
   )
   # Right
   typeset -g POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=( )
@@ -190,9 +191,9 @@
   typeset -g POWERLEVEL9K_CONTEXT_{REMOTE,REMOTE_SUDO}_BACKGROUND=0
   typeset -g POWERLEVEL9K_CONTEXT_FOREGROUND=3
   typeset -g POWERLEVEL9K_CONTEXT_BACKGROUND=0
-  typeset -g POWERLEVEL9K_CONTEXT_ROOT_TEMPLATE='%n@%m'
-  typeset -g POWERLEVEL9K_CONTEXT_{REMOTE,REMOTE_SUDO}_TEMPLATE='%n@%m'
-  typeset -g POWERLEVEL9K_CONTEXT_TEMPLATE='%n@%m'
+  typeset -g POWERLEVEL9K_CONTEXT_ROOT_TEMPLATE=''
+  typeset -g POWERLEVEL9K_CONTEXT_{REMOTE,REMOTE_SUDO}_TEMPLATE=''
+  typeset -g POWERLEVEL9K_CONTEXT_TEMPLATE=''
   typeset -g POWERLEVEL9K_CONTEXT_{DEFAULT,SUDO}_{CONTENT,VISUAL_IDENTIFIER}_EXPANSION=
   # If p10k is already loaded, reload configuration.
   # This works even with POWERLEVEL9K_DISABLE_HOT_RELOAD=true.
