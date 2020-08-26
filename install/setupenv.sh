@@ -283,14 +283,13 @@ info "Installing zsh plugins"
 makedir "${CONFIG}"/zsh-plugins
 ln -s -f "${CONFIG}"/zsh-plugins /root/.config/zsh-plugins
 
-get zsh-autosuggestions
-get zsh-syntax-highlighting
+apt -y install zsh-autosuggestions zsh-syntax-highlighting 1>/dev/null 2>/dev/null
 own /usr/share/zsh-*
 
 for plugin in "sudo"
 do
     info "Downloading ${plugin}"
-    wget -q -O "${CONFIG}"/.zsh-plugins/"${1}" https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/"${1}"/"${1}".plugin.zsh
+    wget -q -O "${CONFIG}"/zsh-plugins/"${plugin}".plugin.zsh https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/"${plugin}"/"${plugin}".plugin.zsh
 done
 
 own "${CONFIG}"/zsh-plugins

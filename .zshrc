@@ -24,7 +24,7 @@ HISTFILE=~/.zsh_history
 source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh-sytax-hightlighting/zsh-syntax-highlighting.zsh
 
-source ~/.config/zsh-plugins/sudo
+source ~/.config/zsh-plugins/sudo.plugin.zsh
 
 # ==== ALIASES ====
 
