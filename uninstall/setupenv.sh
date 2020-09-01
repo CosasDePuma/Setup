@@ -34,7 +34,6 @@ panic() {
 
 # Iterate over programs
 iter() {
-  # s_hellcheck disable=SC2086
   for program in $programs
   do
     command=$(echo "${*}" | sed "s/%%/${program}/")

@@ -12,7 +12,7 @@ frame-opacity = 0.80;
 backend = "glx";
 
 opacity-rule = [
-  "99:class_g = 'Atom'",
+	"99:class_g = 'Atom'",
 	"99:class_g = 'burp-StartBurp'",
 	"80:class_g = 'Caja'",
 	"99:class_g = 'Code'",
