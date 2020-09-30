@@ -90,4 +90,4 @@ super + ctrl + {Left,Down,Up,Right}
 
 # Resize Current Window
 super + shift + {Left,Down,Up,Right}
-	/home/puma/.config/bspwm/scripts/bspwm_resize {west,south,north,east}
+	~/.config/bspwm/scripts/bspwm_resize {west,south,north,east}

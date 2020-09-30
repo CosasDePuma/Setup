@@ -13,17 +13,16 @@ sxhkd &
 # Fix Java errors with bspwm
 wname LG3D &
 # Polybar
-/home/puma/.config/polybar/launch.sh &
+~/.config/polybar/launch.sh &
 # Background
-feh --bg-fill /home/puma/.config/feh/wallpaper
+feh --bg-fill ~/.config/feh/wallpaper
 # Transparency
-compton --config /home/puma/.config/compton/comptonrc &
+compton --config ~/.config/compton/comptonrc &
 
 # Windows Key as modifier
 bscp config pointer_modifier mod1
 
 # Programs as Floating Windows
-bspc rule -a Caja desktop='^8' state=floating follow=on
 bspc rule -a Gimp desktop='^8' state=floating follow=on
 
 # --- Default ---
