@@ -132,7 +132,7 @@ checkfile() {
 # ==== CHECK: OS ====
 
 # Only tested on parrot-5.7
-uname -n | grep -q parrot "parrot" || panic "This script only works in Parrot OS"
+uname -n | grep -q "parrot" || panic "This script only works in Parrot OS"
 test "$(uname -r | cut -d. -f1-2)" = "5.7" || warning "This script was only tested on Parrot OS 7.2"
 
 # ==== UPDATE | UPGRADE ====
