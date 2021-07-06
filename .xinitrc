@@ -5,9 +5,19 @@
 # ██╔╝ ██╗██║██║ ╚████║██║   ██║   ██║  ██║╚██████╗
 # ╚═╝  ╚═╝╚═╝╚═╝  ╚═══╝╚═╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝
 
+# Global
+# ----------
+if test -d /etc/X11/xinit/xinitrc.d; then
+	for f in /etc/X11/xinit/xinitrc.d/*; do
+		test -x "${f}" && . "${f}"
+	done
+	unset f
+fi
+
 # Wallpaper
 # ----------
 command -v feh >/dev/null && test -x ~/.fehbg && ~/.fehbg &
+
 # Window manager
 # ----------
-command -v i3 >/dev/null && exec i3
+exec i3
