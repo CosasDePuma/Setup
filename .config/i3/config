@@ -1,0 +1,142 @@
+# ██╗██████╗   ██████╗ ██████╗ ███╗   ██╗███████╗██╗ ██████╗ 
+# ╠═╣╚════██╗ ██╔════╝██╔═══██╗████╗  ██║██╔════╝██║██╔════╝ 
+# ██║ █████╔╝ ██║     ██║   ██║██╔██╗ ██║█████╗  ██║██║  ███╗
+# ██║ ╚═══██╗ ██║     ██║   ██║██║╚██╗██║██╔══╝  ██║██║   ██║
+# ██║██████╔╝ ╚██████╗╚██████╔╝██║ ╚████║██║     ██║╚██████╔╝
+# ╚═╝╚═════╝   ╚═════╝ ╚═════╝ ╚═╝  ╚═══╝╚═╝     ╚═╝ ╚═════╝ 
+
+# General
+# ----------
+# modkey: Alt
+set $mod Mod1
+# shotcutkey: Win
+set $short Mod4
+# fonts
+font pango:Fira Code Retina 8
+# modifier on floating windows
+floating_modifier $mod
+# mouse to select window
+focus_follows_mouse yes
+# spanish keyboard layout
+exec --no-startup-id setxkbmap -layout es,es
+
+# Gaps
+# ----------
+gaps inner 10
+gaps outer 20
+smart_gaps on
+smart_borders on
+
+# Keybindings: i3
+# ----------
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+bindsym $mod+Shift+e exec i3-msg exit
+
+# Keybindings: Apps
+# ----------
+# terminal
+bindsym $short+Return exec --no-startup-id termite
+# launcher
+bindsym $short+r exec --no-startup-id rofi -modi drun,run -show drun
+# browser
+bindsym $short+b exec --no-startup-id chromium
+bindsym $short+Shift+b exec --no-startup-id chromium -incognito
+
+# Keybindings: Windows
+# ----------
+# exit
+bindsym $mod+Shift+q kill
+# fullscreen
+bindsym $mod+f fullscreen toggle
+# resize
+bindsym $mod+r mode resize
+# change focus 
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+bindsym $mod+Down focus down
+bindsym $mod+Left focus left
+# move floating window
+bindsym $mod+Shift+Up move up 30px
+bindsym $mod+Shift+Right move right 30px
+bindsym $mod+Shift+Down move down 30px
+bindsym $mod+Shift+Left move left 30px
+# focus floating
+bindsym $mod+space focus mode_toggle
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+# layout
+bindsym $mod+s layout split
+# split
+bindsym $mod+h split h
+bindsym $mod+v split v
+
+# Workspaces
+# ----------
+# aliases
+set $ws1 1
+set $ws2 2
+set $ws3 3
+set $ws4 4
+set $ws5 5
+set $ws6 6
+set $ws7 7
+set $ws8 8
+set $ws9 9
+set $ws10 10
+# switch
+bindsym $mod+1 workspace number $ws1
+bindsym $mod+2 workspace number $ws2
+bindsym $mod+3 workspace number $ws3
+bindsym $mod+4 workspace number $ws4
+bindsym $mod+5 workspace number $ws5
+bindsym $mod+6 workspace number $ws6
+bindsym $mod+7 workspace number $ws7
+bindsym $mod+8 workspace number $ws8
+bindsym $mod+9 workspace number $ws9
+bindsym $mod+0 workspace number $ws10
+# move
+bindsym $mod+Shift+1 move container to workspace number $ws1
+bindsym $mod+Shift+2 move container to workspace number $ws2
+bindsym $mod+Shift+3 move container to workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws5
+bindsym $mod+Shift+6 move container to workspace number $ws6
+bindsym $mod+Shift+7 move container to workspace number $ws7
+bindsym $mod+Shift+8 move container to workspace number $ws8
+bindsym $mod+Shift+9 move container to workspace number $ws9
+bindsym $mod+Shift+0 move container to workspace number $ws10
+
+# Modes
+# ----------
+# resize
+mode "resize" {
+        # keyboard
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+        # return
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
+}
+
+# Theme
+# ----------
+# colors
+set $cbg "#f26262"
+set $ccolor "#efebe0"
+set $cunfo "#cb8b8b"
+set $cindi "#145ba7"
+set $cindiu "#8a9db1"
+# props <class>		<border> <background> <text> <indicator> <child_border>
+client.focused		$cbg	$cbg	$ccolor	$cindi	$cbg
+client.focused_inactive	$cbg	$cunfo	$ccolor	$cindiu	$cunfo
+client.unfocused	$cbg	$cunfo	$ccolor	$cindiu	$cunfo
+client.urgent		$cbg	$cunfo	$ccolor	$cindi	$cunfo
+
+# Reference: dotshare.it/dots/1546
+
+# start a terminal
+bindsym $mod+Return exec i3-sensible-terminal
